@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "888134096023",
+    "project_id": "csc-app-de8ac",
+    "storage_bucket": "csc-app-de8ac.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:888134096023:android:7f695b83f44f2cccda45d2",
+        "android_client_info": {
+          "package_name": "com.example.csc"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCAaa-HUuivduH0_qA8DnM7jvc0HuWnWBU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:888134096023:android:26c24f8747a473afda45d2",
+        "android_client_info": {
+          "package_name": "com.example.osm"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCAaa-HUuivduH0_qA8DnM7jvc0HuWnWBU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
