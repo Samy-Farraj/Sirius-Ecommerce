@@ -1,4 +1,4 @@
-import 'package:osm/src/components/loading_car.dart';
+import 'package:sirius/src/components/loading_car.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

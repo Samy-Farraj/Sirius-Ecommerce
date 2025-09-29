@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:sirius/src/themes/app_colors.dart';
 
 class SvgIcon extends StatelessWidget {
   final String iconTitle;
@@ -7,7 +10,8 @@ class SvgIcon extends StatelessWidget {
   final double? h;
   final double? w;
   final bool isDierctional;
-  final VoidCallback? onTap; // أضف هذا
+  final bool isLoading;
+  final VoidCallback? onTap;
 
   const SvgIcon({
     super.key,
@@ -16,20 +20,26 @@ class SvgIcon extends StatelessWidget {
     this.h,
     this.w,
     this.isDierctional = false,
+    this.isLoading = false,
     this.onTap, // وأ
   });
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: SvgPicture.asset(
-        iconTitle,
-        height: h,
-        width: w,
-        matchTextDirection: isDierctional,
-        color: color,
-      ),
-    );
+    return (isLoading)
+        ? SpinKitThreeBounce(
+            size: 10.sp,
+            color: AppColors.primary,
+          )
+        : GestureDetector(
+            onTap: onTap,
+            child: SvgPicture.asset(
+              iconTitle,
+              height: h,
+              width: w,
+              matchTextDirection: isDierctional,
+              color: color,
+            ),
+          );
   }
 }

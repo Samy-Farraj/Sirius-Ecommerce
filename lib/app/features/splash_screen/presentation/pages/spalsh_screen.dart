@@ -1,6 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../../../src/components/svg_icon_widget.dart';
 import '../../../../../src/core/data_sources/local/local_storage.dart';
@@ -15,20 +18,27 @@ class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
 
   @override
-  State<SplashScreen> createState() => _SplashScreenState();
+  _SplashScreenState createState() => _SplashScreenState();
 }
 
 class _SplashScreenState extends State<SplashScreen>
     with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _logoScale;
+  late Animation<double> _logoOpacity;
+  late Animation<double> _textOpacity;
+  late Animation<Offset> _textSlide;
+
   late final LocalStorage localStorage;
 
-  @override
-  void initState() {
-    super.initState();
-    localStorage = sl.get<LocalStorage>();
-    Future.delayed(const Duration(seconds: 4), () {
-      navigateTo();
-    });
+  void navigateToOnBoarding() {
+    p(String k, String s) {
+      if (kDebugMode) {
+        print('navigateTo : $k  ||| $s');
+      }
+    }
+
+    context.go(Routes.onBoarding);
   }
 
   void navigateTo() {
@@ -39,20 +49,10 @@ class _SplashScreenState extends State<SplashScreen>
     }
 
     p('token != null', (localStorage.token != null).toString());
-    // context.go(Routes.chooseLanguage);
-    //PusherManager pusherManager = PusherManager();
-    // 2️⃣ الاشتراك في قناة السائق
-    String? driverId = localStorage.appUser?.id
-        .toString(); // معرف السائق الذي تريد الاشتراك به
-    // pusherManager.subscribeToDriverChannel(driverId ?? "");
+
     print("localStorage.tokenlocalStorage.token${localStorage.token}");
     if (localStorage.token != null) {
-      if (localStorage.appUser?.isDriver == true) {
-        context.go(Routes.driverMapScreen);
-      } else {
-        // context.go(Routes.home);
-        context.go(Routes.home);
-      }
+      context.go(Routes.dashboard);
 
       return;
     } else {
@@ -61,21 +61,119 @@ class _SplashScreenState extends State<SplashScreen>
     }
   }
 
-  @override
-  Widget build(BuildContext context) {
-    if (localStorage.onBoardingSeen.isNullOrFalse) {}
+  late SharedPreferences prefs;
+  Future<void> _initPreferencesAndNavigate() async {
+    prefs = await SharedPreferences.getInstance();
 
-    return Scaffold(
-      body: Container(
-        width: double.infinity,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(AppImages.splash),
-            fit: BoxFit.cover,
-          ),
-        ),
-        child: Center(),
+    final seenOnboarding = prefs.getBool('isShowOnBoarding');
+
+    if (seenOnboarding == true) {
+      {
+        p(String k, String s) {
+          if (kDebugMode) {
+            print('navigateTo : $k  ||| $s');
+          }
+        }
+
+        p('token != null', (localStorage.token != null).toString());
+
+        if (localStorage.token != null) {
+          context.go(Routes.dashboard);
+          return;
+        } else {
+          context.go(Routes.login);
+          return;
+        }
+      }
+
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        //   _navigateToSplash();
+      });
+    } else {
+      navigateToOnBoarding();
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 3),
+    );
+
+    _logoScale = Tween<double>(begin: 0.5, end: 1.0).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: const Interval(0.0, 0.5, curve: Curves.easeOutBack),
       ),
     );
+
+    _logoOpacity = Tween<double>(begin: 0.0, end: 1.0).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: const Interval(0.0, 0.5, curve: Curves.easeIn),
+      ),
+    );
+
+    _textOpacity = Tween<double>(begin: 0.0, end: 1.0).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: const Interval(0.4, 0.8, curve: Curves.easeIn),
+      ),
+    );
+
+    _textSlide = Tween<Offset>(
+      begin: const Offset(0.0, 0.5),
+      end: Offset.zero,
+    ).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: const Interval(0.4, 0.8, curve: Curves.easeOut),
+      ),
+    );
+
+    _controller.forward();
+
+    localStorage = sl.get<LocalStorage>();
+    Future.delayed(const Duration(seconds: 4), () {
+      _initPreferencesAndNavigate();
+    });
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        backgroundColor: Colors.white,
+        body: Center(
+          child: AnimatedBuilder(
+              animation: _controller,
+              builder: (context, child) {
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ScaleTransition(
+                      scale: _logoScale,
+                      child: FadeTransition(
+                        opacity: _logoOpacity,
+                        child: Image.asset(
+                          'assets/images/logo.png',
+                          width: 150.w,
+                          height: 150.w,
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 30.h),
+                  ],
+                );
+              }),
+        ));
   }
 }

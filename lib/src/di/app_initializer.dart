@@ -29,12 +29,12 @@ abstract class AppInitializer {
     AppRouter.init();
 
     /// hive initialize
-    await HiveInitializer.initialize();
+    //await HiveInitializer.initialize();
 
     /// dependencies injection
     await ServicesLocator.setup();
 
     /// hive initialize
-    await HiveInitializer.initialize();
+    //  await HiveInitializer.initialize();
   }
 }

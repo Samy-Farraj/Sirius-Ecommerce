@@ -2,7 +2,7 @@
 
 // ignore_for_file: constant_identifier_names
 
-abstract class  LocaleKeys {
+abstract class LocaleKeys {
   static const no_connection = 'no_connection';
   static const login = 'login';
   static const email = 'email';
@@ -14,7 +14,8 @@ abstract class  LocaleKeys {
   static const previous = 'previous';
   static const fill_your_car_details = 'fill_your_car_details';
   static const automatically = 'automatically';
-  static const fill_your_car_details_manually = 'fill_your_car_details_manually';
+  static const fill_your_car_details_manually =
+      'fill_your_car_details_manually';
   static const scan_your_car_license = 'scan_your_car_license';
   static const car_engine_type = 'car_engine_type';
   static const select_your_car_brand = 'select_your_car_brand';
@@ -44,7 +45,8 @@ abstract class  LocaleKeys {
   static const on_boarding_sub_title_second = 'on_boarding_sub_title_second';
   static const on_boarding_title_second = 'on_boarding_title_second';
   static const on_boarding_description_first = 'on_boarding_description_first';
-  static const on_boarding_description_second = 'on_boarding_description_second';
+  static const on_boarding_description_second =
+      'on_boarding_description_second';
   static const choose_your_language = 'choose_your_language';
   static const phone_number = 'phone_number';
   static const enter_your_password = 'enter_your_password';
@@ -53,10 +55,11 @@ abstract class  LocaleKeys {
   static const new_on = 'new_on';
   static const create_new_account = 'create_new_account';
   static const email_validator_msg = 'email_validator_msg';
-  static const required_validator_msg = 'required_validator_msg';
+  static const required_validator_msg = 'Please_fill_out_this_field';
   static const phone_validator_msg = 'phone_validator_msg';
   static const password_validator_msg = 'password_validator_msg';
-  static const confirm_password_validator_msg = 'confirm_password_validator_msg';
+  static const confirm_password_validator_msg =
+      'confirm_password_validator_msg';
   static const question_mark = 'question_mark';
   static const email_address = 'email_address';
   static const name = 'name';
@@ -66,7 +69,8 @@ abstract class  LocaleKeys {
   static const terms_and_conditions = 'terms_and_conditions';
   static const already_have_an_account = 'already_have_an_account';
   static const verify_your_number = 'verify_your_number';
-  static const enter_otp_just_sent_to_your_number = 'enter_otp_just_sent_to_your_number';
+  static const enter_otp_just_sent_to_your_number =
+      'enter_otp_just_sent_to_your_number';
   static const resend_code_after = 'resend_code_after';
   static const resend = 'resend';
   static const categories = 'categories';
@@ -76,7 +80,8 @@ abstract class  LocaleKeys {
   static const send_code = 'send_code';
   static const create_new_password = 'create_new_password';
   static const confirm = 'confirm';
-  static const your_password_has_been_changed = 'your_password_has_been_changed';
+  static const your_password_has_been_changed =
+      'your_password_has_been_changed';
   static const new_notification = 'new_notification';
   static const checkout = 'checkout';
   static const notification = 'notification';
@@ -119,7 +124,8 @@ abstract class  LocaleKeys {
   static const book_appointment = 'book_appointment';
   static const delivery_address = 'delivery_address';
   static const enter_shipping_address = 'enter_shipping_address';
-  static const select_location_manually_on_map = 'select_location_manually_on_map';
+  static const select_location_manually_on_map =
+      'select_location_manually_on_map';
   static const jordan_amman = 'jordan_amman';
   static const area_district = 'area_district';
   static const street_name = 'street_name';
@@ -127,9 +133,12 @@ abstract class  LocaleKeys {
   static const floor = 'floor';
   static const nearest_landmark = 'nearest_landmark';
   static const use_as_my_default_address = 'use_as_my_default_address';
-  static const allow_location_access_to_add_a_new_address = 'allow_location_access_to_add_a_new_address';
-  static const allow_carX_app_to_access_your_location_and_skip_this_step_in_future = 'allow_carX_app_to_access_your_location_and_skip_this_step_in_future';
-  static const you_can_manage_this_access_at_any_time_in = 'you_can_manage_this_access_at_any_time_in';
+  static const allow_location_access_to_add_a_new_address =
+      'allow_location_access_to_add_a_new_address';
+  static const allow_carX_app_to_access_your_location_and_skip_this_step_in_future =
+      'allow_carX_app_to_access_your_location_and_skip_this_step_in_future';
+  static const you_can_manage_this_access_at_any_time_in =
+      'you_can_manage_this_access_at_any_time_in';
   static const permissions_settings = 'permissions_settings';
   static const not_now = 'not_now';
   static const allow_access = 'allow_access';
@@ -169,5 +178,4 @@ abstract class  LocaleKeys {
   static const otp_confirmation = 'otp_confirmation';
   static const first_name = 'first_name';
   static const last_name = 'last_name';
-
 }

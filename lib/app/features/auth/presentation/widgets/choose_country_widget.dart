@@ -58,56 +58,5 @@ class ChooseCountryWidget extends StatelessWidget {
             bloc.add(SelectCountryEvent(value.toString())),
       ).size(w: 80.w).pSymmetric(),
     );
-    return SizedBox(
-      width: 140.w,
-      child: Row(
-        children: [
-          SizedBox(
-            width: 100.w,
-            child: DropdownButtonFormField<String>(
-              decoration: InputDecoration(
-                iconColor: AppColors.dark,
-                hintStyle: TextStyle(color: AppColors.darkest),
-                labelStyle: TextStyle(color: AppColors.dark),
-                enabledBorder: InputBorder.none,
-                focusedBorder: InputBorder.none,
-                counterStyle: TextStyle(color: AppColors.dark),
-                suffixStyle: TextStyle(color: AppColors.dark),
-              ),
-              value: 'SY',
-              focusColor: AppColors.dark,
-              style: TextStyle(color: AppColors.dark),
-              iconEnabledColor: AppColors.dark,
-              iconDisabledColor: AppColors.dark,
-              items: List.generate(
-                Country.countries.length,
-                (index) => DropdownMenuItem(
-                  value: Country.countries[index]['code']!,
-                  child: CountryFlagCodeWidget(
-                    dialCode: Country.countries[index]['dial_code']!,
-                    flag: Country.flagByIndex(index),
-                  ),
-                ),
-              ),
-              onChanged: (Object? value) =>
-                  bloc.add(SelectCountryEvent(value.toString())),
-            ).size(w: 95.w).pSymmetric(),
-          ),
-          SizedBox(
-            width: 10.w,
-          ),
-          SizedBox(
-            height: 45.h,
-            width: 2.w,
-            child: Container(
-              color: AppColors.white,
-            ),
-          ),
-          SizedBox(
-            width: 10.w,
-          ),
-        ],
-      ),
-    );
   }
 }

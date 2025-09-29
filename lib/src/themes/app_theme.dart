@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -6,20 +7,41 @@ import '../utils/extensions.dart';
 import 'app_colors.dart';
 import 'app_sizes.dart';
 
-ThemeData get appTheme => ThemeData(
-      dialogTheme: dialogTheme,
-      scaffoldBackgroundColor: AppColors.white,
+// ThemeData get appTheme => ThemeData(
+//       dialogTheme: dialogTheme,
+//       scaffoldBackgroundColor: AppColors.white,
+//       primarySwatch: AppColors.primary.toMaterialColor(),
+//       brightness: Brightness.light,
+//       fontFamily: "Montserrat",
+//       primaryColor: AppColors.primary,
+//       colorScheme: ColorScheme.fromSwatch(
+//         primarySwatch: AppColors.primary.toMaterialColor(),
+//       ),
+//       textTheme: textTheme,
+//       appBarTheme: appBarTheme,
+//       inputDecorationTheme: inputDecorationTheme,
+//     );
+bool isArabic = false;
+String fontFamily = "Montserrat";
+ThemeData appTheme(BuildContext context) {
+  isArabic = context.locale.languageCode == 'ar';
+  fontFamily = isArabic ? "Cairo" : "Montserrat";
+
+  return ThemeData(
+    dialogTheme: dialogTheme,
+    scaffoldBackgroundColor: AppColors.white,
+    primarySwatch: AppColors.primary.toMaterialColor(),
+    brightness: Brightness.light,
+    fontFamily: fontFamily,
+    primaryColor: AppColors.primary,
+    colorScheme: ColorScheme.fromSwatch(
       primarySwatch: AppColors.primary.toMaterialColor(),
-      brightness: Brightness.light,
-      fontFamily: "Cairo",
-      primaryColor: AppColors.primary,
-      colorScheme: ColorScheme.fromSwatch(
-        primarySwatch: AppColors.primary.toMaterialColor(),
-      ),
-      textTheme: textTheme,
-      appBarTheme: appBarTheme,
-      inputDecorationTheme: inputDecorationTheme,
-    );
+    ),
+    textTheme: textTheme,
+    appBarTheme: appBarTheme,
+    inputDecorationTheme: inputDecorationTheme,
+  );
+}
 
 AppBarTheme get appBarTheme => AppBarTheme(
     elevation: 0,
@@ -36,61 +58,81 @@ DialogTheme get dialogTheme {
 
 TextTheme get textTheme => TextTheme(
       displayLarge: TextStyle(
-        fontSize: 38.sp,
-        fontWeight: FontWeight.bold,
+        fontSize: 26.sp,
+        fontWeight: FontWeight.w700,
         color: AppColors.black,
+        fontFamily: fontFamily,
       ),
       displayMedium: TextStyle(
-        fontSize: 24.sp,
-        fontWeight: FontWeight.bold,
-        color: AppColors.dark,
-      ),
+          fontSize: 24.sp,
+          fontWeight: FontWeight.w700,
+          color: AppColors.black,
+          fontFamily: fontFamily),
       displaySmall: TextStyle(
-        fontSize: 19.sp,
-        fontWeight: FontWeight.bold,
-        color: AppColors.dark,
+        fontSize: 20.sp,
+        fontWeight: FontWeight.w700,
+        color: AppColors.black,
+        fontFamily: fontFamily,
       ),
+
+      //16.sp
       titleLarge: TextStyle(
-        fontSize: 18.sp,
-        fontWeight: FontWeight.bold,
-        color: AppColors.dark,
-        fontFamily: "Cairo",
+        fontSize: 16.sp,
+        fontWeight: FontWeight.w800,
+        color: AppColors.black,
+        fontFamily: fontFamily,
       ),
       titleMedium: TextStyle(
-        fontSize: 17.sp,
-        fontWeight: FontWeight.bold,
-        color: AppColors.dark,
-        fontFamily: "Cairo",
+        fontSize: 16.sp,
+        fontWeight: FontWeight.w700,
+        color: AppColors.black,
+        fontFamily: fontFamily,
       ),
       titleSmall: TextStyle(
         fontSize: 16.sp,
-        fontWeight: FontWeight.w500,
-        color: AppColors.dark,
-        fontFamily: "Cairo",
+        fontWeight: FontWeight.w600,
+        color: AppColors.black,
+        fontFamily: fontFamily,
       ),
+
+      //12.sp
       labelLarge: TextStyle(
-        fontSize: 16.sp,
+        fontSize: 12.sp,
         fontWeight: FontWeight.w700,
-        color: AppColors.dark,
-        fontFamily: "Cairo",
+        color: AppColors.black,
+        fontFamily: fontFamily,
       ),
-      bodyLarge: TextStyle(
-        fontSize: 14.sp,
-        fontWeight: FontWeight.w400,
-        color: AppColors.grey,
-      ),
-      bodyMedium: TextStyle(
-        fontSize: 13.sp,
-        fontWeight: FontWeight.w400,
-        color: AppColors.dark,
-      ),
-      bodySmall: TextStyle(
+      labelMedium: TextStyle(
         fontSize: 12.sp,
         fontWeight: FontWeight.w500,
-        color: AppColors.grey,
+        color: AppColors.black,
+        fontFamily: fontFamily,
       ),
+      labelSmall: TextStyle(
+          fontSize: 12.sp,
+          fontWeight: FontWeight.w400,
+          color: AppColors.grey,
+          fontFamily: fontFamily),
+
+      //10.sp
+      bodyLarge: TextStyle(
+          fontSize: 10.sp,
+          fontWeight: FontWeight.w700,
+          color: AppColors.grey,
+          fontFamily: fontFamily),
+      bodyMedium: TextStyle(
+          fontSize: 10.sp,
+          fontWeight: FontWeight.w500,
+          color: AppColors.black,
+          fontFamily: fontFamily),
+      bodySmall: TextStyle(
+          fontSize: 10.sp,
+          fontWeight: FontWeight.w400,
+          color: AppColors.grey,
+          fontFamily: fontFamily),
     );
 
+///
 // InputDecorationTheme get inputDecorationTheme => InputDecorationTheme(
 //       labelStyle: textTheme.bodyLarge,
 //       floatingLabelBehavior: FloatingLabelBehavior.never,

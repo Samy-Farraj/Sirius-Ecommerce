@@ -1,4 +1,4 @@
-# osm
+# sirius
 
 A new Flutter project.
 

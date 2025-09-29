@@ -1,4 +1,4 @@
-import 'package:osm/src/themes/app_images.dart';
+import 'package:sirius/src/themes/app_images.dart';
 import 'package:flutter/material.dart';
 
 class LoadingCar extends StatelessWidget {

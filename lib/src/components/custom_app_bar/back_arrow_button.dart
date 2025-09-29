@@ -24,7 +24,7 @@ class BackArrowButton extends StatelessWidget {
           },
       padding: EdgeInsets.zero,
       icon: SvgIcon(
-        iconTitle: AppIcons.chevronLeft,
+        iconTitle: AppIcons.homeColored,
         color: color,
         w: 32.w,
         isDierctional: true,

@@ -31,12 +31,17 @@ class ForgetPasswordConfirmEvent extends AuthEvent {}
 
 class ForgetPasswordEvent extends AuthEvent {}
 
-class LoginEvent extends AuthEvent {}
+class LoginEvent extends AuthEvent {
+  String phone;
+  String password;
 
-class LogOutEvent extends AuthEvent {
-  bool isDriver;
-  LogOutEvent({required this.isDriver});
+  LoginEvent({
+    required this.phone,
+    required this.password,
+  });
 }
+
+class LogOutEvent extends AuthEvent {}
 
 class RegisterEvent extends AuthEvent {
   DateTime dateTime;

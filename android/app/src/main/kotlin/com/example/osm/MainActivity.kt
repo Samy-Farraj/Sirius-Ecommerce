@@ -1,4 +1,4 @@
-package com.example.osm
+package com.example.sirius
 
 import io.flutter.embedding.android.FlutterActivity
 

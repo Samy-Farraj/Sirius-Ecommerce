@@ -19,7 +19,7 @@ class NotificationIconButton extends StatelessWidget {
         },
         padding: EdgeInsets.zero,
         icon: SvgIcon(
-          iconTitle: AppIcons.notification,
+          iconTitle: AppIcons.home,
           w: 24.sp,
         ),
       ),

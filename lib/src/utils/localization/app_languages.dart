@@ -8,10 +8,9 @@ import 'app_locales.dart';
 abstract class AppLanguages {
   static setLocale(BuildContext context, Locale locale) async {
     if (allLocales.contains(locale)) {
+      print("SADASDAS${locale.languageCode}");
       context.setLocale(locale);
-      // await sl
-      //     .get<LocalStorage>()
-      //     .storeLanguage(locale.toStringWithSeparator());
+      await sl.get<LocalStorage>().storeLanguage(locale.languageCode);
       // Phoenix.rebirth(context);
     } else {
       throw Exception('App does not support this locale');

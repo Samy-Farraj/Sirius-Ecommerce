@@ -1,10 +1,29 @@
 abstract class ApiEndpoints {
-  static const String baseUrl = 'https://csc.taskati.net/api/';
+  static const String baseUrl = 'https://sirius.taskati.net/api/';
 
-  //---------------------- Account - CLIENT ---------------------------
-  static const String show = '${baseUrl}client';
+  //---------------------- COMPANY- Account ---------------------------
+  static const String show = '${baseUrl}company/profile';
+  static const String updateProfile = '${baseUrl}company/profile';
+  static const String logoutCompany = '${baseUrl}company/logout';
+
+  //---------------------- COMPANY - PRODUCT ---------------------------
+  static const String getAllProduct = '${baseUrl}company/products';
+  static const String getProductById = '${baseUrl}company/products/';
+  static const String storeProduct = '${baseUrl}company/products';
+  static const String deleteProductById = '${baseUrl}company/products/';
+  static const String editProductById = '${baseUrl}company/products/';
+
+  //---------------------- COMPANY - BRANCHES ---------------------------
+  static const String deleteBranchById = '${baseUrl}company/company-branches/';
+  static const String storeBranch = '${baseUrl}company/company-branches';
+  static const String updateBranchById = '${baseUrl}company/company-branches/';
+
+  //---------------------- COMPANY - OFFERS ---------------------------
+
+  static const String addOffer = '${baseUrl}company/product-sales';
   //---------------------- Account - DRIVER ---------------------------
   static const String showDriver = '${baseUrl}driver';
+  static const String getFilterValue = '${baseUrl}company/products/filters';
 
   //---------------------- CLIENT - JOURNEYS ---------------------------
   static const String scheduled = '${baseUrl}client/journey/history';
@@ -27,10 +46,27 @@ abstract class ApiEndpoints {
   static const String generateSharingCodeLinkJourneyById =
       '${baseUrl}client/journey/encode/';
 
-  //---------------------- AUTH - CLIENT ---------------------------
+  //---------------------- AUTH - COMPANY ---------------------------
+
+  static const String login = '${baseUrl}company/login';
+  //---------------------- COLOR - COMPANY ---------------------------
+
+  static const String getColors = '${baseUrl}company/colors';
+  static const String getSizes = '${baseUrl}company/sizes/category/';
+
+  ////
+  static const String getCities = '${baseUrl}cities';
+
+  //---------------------- DASHBOARD - COMPANY ---------------------------
+  static const String getStatics = '${baseUrl}company/products/dashboard';
+
+  //---------------------- Categories - COMPANY ---------------------------
+
+  static const String categories = '${baseUrl}company/categories';
+
   static const String register = '${baseUrl}client/register';
   static const String verifyCode = '${baseUrl}client/validate';
-  static const String login = '${baseUrl}client/verify';
+
   static const String logOutDriver = '${baseUrl}driver/logout';
   static const String logOutClient = '${baseUrl}client/logout';
 

@@ -1,5 +1,5 @@
-import 'package:osm/src/themes/app_colors.dart';
-import 'package:osm/src/themes/app_theme.dart';
+import 'package:sirius/src/themes/app_colors.dart';
+import 'package:sirius/src/themes/app_theme.dart';
 import 'package:flutter/material.dart';
 
 enum SnackbarType { success, error, info }

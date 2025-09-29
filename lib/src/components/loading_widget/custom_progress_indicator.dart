@@ -1,5 +1,5 @@
 import 'package:capped_progress_indicator/capped_progress_indicator.dart';
-import 'package:osm/src/themes/app_colors.dart';
+import 'package:sirius/src/themes/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -17,7 +17,7 @@ class CustomProgressIndicator extends StatelessWidget {
       alignment: Alignment.center,
       children: [
         SvgIcon(
-          iconTitle: AppIcons.cscLogo,
+          iconTitle: AppIcons.home,
           h: 24.h,
         ),
         SizedBox(

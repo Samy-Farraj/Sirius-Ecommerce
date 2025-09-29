@@ -31,7 +31,8 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 45.h,
+      height: 42.h,
+      width: 352.w,
       decoration: ShapeDecoration(
         color: Colors.white,
         shape: RoundedRectangleBorder(
@@ -84,8 +85,8 @@ class TextFieldWithTitle extends StatelessWidget {
           children: [
             Text(
               title,
-              style: textTheme.bodyLarge?.copyWith(
-                color: AppColors.grey,
+              style: textTheme.labelMedium?.copyWith(
+                color: AppColors.black,
               ),
             ),
             if (optional)
@@ -127,6 +128,7 @@ class TextFormFieldWidget extends StatefulWidget {
     this.suffixIcon,
     this.initialValue,
     this.enabled,
+    this.readOnly = false,
     this.maxLines = 1,
     this.isMultiline = false,
     this.contentPadding,
@@ -147,6 +149,7 @@ class TextFormFieldWidget extends StatefulWidget {
   final String? label;
   final bool secure;
   final bool? enabled;
+  final bool? readOnly;
   final bool isMultiline;
   final BaseValidator? validator;
   final BoxConstraints? prefixConstraint;
@@ -174,7 +177,8 @@ class _TextFormFieldWidgetState extends State<TextFormFieldWidget> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      style: widget.textStyle,
+      style: widget.textStyle ??
+          textTheme.bodyMedium!.copyWith(color: AppColors.dark),
       initialValue: widget.initialValue,
       focusNode: widget.focusNode,
       keyboardType: widget.keyboardType,
@@ -184,6 +188,7 @@ class _TextFormFieldWidgetState extends State<TextFormFieldWidget> {
       controller: widget.controller,
       textDirection: widget.textDirection,
       obscureText: widget.hideText,
+      readOnly: widget.readOnly ?? false,
       enabled: widget.enabled,
       maxLines: widget.isMultiline ? null : widget.maxLines,
       textAlign: widget.textAlign,
@@ -218,7 +223,7 @@ class _TextFormFieldWidgetState extends State<TextFormFieldWidget> {
         contentPadding: widget.contentPadding ??
             EdgeInsets.symmetric(horizontal: 12, vertical: 16),
         hintText: widget.hintText,
-        hintStyle: textTheme.bodyLarge?.copyWith(color: AppColors.hintText),
+        hintStyle: textTheme.bodyMedium!.copyWith(color: AppColors.grey),
         labelText: widget.label,
         labelStyle: textTheme.bodyLarge?.copyWith(color: AppColors.hintText),
         prefixIcon: widget.prefix,
@@ -290,6 +295,14 @@ class _TextFormFieldWidgetState extends State<TextFormFieldWidget> {
         });
       },
       icon: widget.hideText
-          ? const Icon(Icons.remove_red_eye_outlined)
-          : AppIcons.eyeSlash.svg());
+          ? Icon(
+              size: 19.sp,
+              Icons.remove_red_eye_outlined,
+              color: Colors.grey,
+            )
+          : Icon(
+              size: 19.sp,
+              Icons.remove_red_eye_rounded,
+              color: Colors.grey,
+            ));
 }

@@ -98,8 +98,12 @@ class LocalStorage {
   Future<bool> clearOnBoarding() async =>
       _sharedPreferences.remove(_onBoardingSeenKey);
 
-  Future<bool> storeLanguage(String lang) async =>
-      await _sharedPreferences.setString(_languageKey, lang);
+  Future<bool> storeLanguage(String lang) async {
+    print("THE NE W LA${lang}");
+    await _sharedPreferences.setString(_languageKey, lang);
+    print("THE NE W language${language}");
+    return await _sharedPreferences.setString(_languageKey, lang);
+  }
 
   String? get language => _sharedPreferences.getString(_languageKey);
 

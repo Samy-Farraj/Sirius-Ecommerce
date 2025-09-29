@@ -162,5 +162,5 @@ class _UnderLineTextFormFieldWidgetState
       },
       icon: widget.hideText
           ? const Icon(Icons.remove_red_eye_outlined)
-          : AppIcons.eyeSlash.svg());
+          : Icon(Icons.remove_red_eye_outlined));
 }

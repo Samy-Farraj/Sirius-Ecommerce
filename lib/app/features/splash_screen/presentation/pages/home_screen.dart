@@ -1,11 +1,19 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class TestScreen extends StatelessWidget {
-  const TestScreen({super.key});
+import '../../../../../src/themes/app_theme.dart';
+
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Center(child: Text("TEST SCREEN")));
+    return Scaffold(
+        appBar: AppBar(),
+        body: Center(
+            child: Text(
+          "HOME SCREEN",
+          style: textTheme.headlineSmall,
+        )));
   }
 }

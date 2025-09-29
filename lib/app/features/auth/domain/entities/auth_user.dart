@@ -3,17 +3,17 @@ import 'package:equatable/equatable.dart';
 import 'app_user.dart';
 
 class AuthUser extends Equatable {
-  final AppUser? user;
+  final AppUser? company;
   final String? token;
 
   const AuthUser(
-    this.user,
+    this.company,
     this.token,
   );
 
   @override
   List<Object?> get props => [
-        user,
+        company,
         token,
       ];
 }

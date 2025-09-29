@@ -1,6 +1,6 @@
 {
-    "name": "osm",
-    "short_name": "osm",
+    "name": "sirius",
+    "short_name": "sirius",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
